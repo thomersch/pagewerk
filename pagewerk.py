@@ -29,7 +29,7 @@ def get_page_title(page_content):
 
 def render_pages(path, template_engine):
 	template = template_engine.get_template("template.tpl")
-	pages_paths = [os.path.join(path, f) for f in os.listdir(path) if os.path.isfile(os.path.join(path, f))]
+	pages_paths = [os.path.join(path, f) for f in os.listdir(path) if os.path.isfile(os.path.join(path, f)) and not f.startswith(".")]
 	for page_path in pages_paths:
 		with open(page_path, "r") as f:
 			page_content = f.read()
